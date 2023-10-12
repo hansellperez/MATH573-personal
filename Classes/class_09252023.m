@@ -7,14 +7,14 @@ function [wN] = HansellPerezHeatBD1(l, T, alpha, m, N)
     k = T/N;
     lamba = alpha^2*k/h^2;
     A = diag(1+2*lambda) + diag(-lambda, 1) + diag(-lambda, -1);
-    f = f.m();
+    f = fm();
 
     for i = 1:m-1
         w0(i) = 
     end
 end
 
-function f = f.m.(f)
+function f = fm(f)
      f = @x ; % insert some function of f
 end
 
