@@ -9,7 +9,7 @@ function [wN] = HansellPerezHeatBD1(l, T, alpha, m, N)
     A = diag(1+2*lambda) + diag(-lambda, 1) + diag(-lambda, -1);
     x = 0:h:l;
     t = 0:k:T;
-    f = fm;
+    f = fm();
     w0 = zeros(m-1,1);
 
     for i = 1:m-1
@@ -22,8 +22,8 @@ function [wN] = HansellPerezHeatBD1(l, T, alpha, m, N)
     end
 end
 
-function f = fm
-     f = @(x) sin(pi*x); % insert some function of f
+function f = fm(f)
+     f = @x ; % insert some function of f
 end
 
 %% Method 2
