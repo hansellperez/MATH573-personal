@@ -1,4 +1,4 @@
-A = imread("BW)1.jpg");
+A = imread("BW1.jpg");
 imshow(A(:,:,1))
 [m,n] = size(A)
 
@@ -12,7 +12,7 @@ norm(B-double(A(:,:,1),1))
 %% loop for traversing through images, want to insert code above in the loop so that everyhting is automated
 num_images = 10; % hardcoded by professor; possible to automate to read a folder contents
 for i = 1:num_images
-    filename = ['BW' num2str(I, '%02d') '.jpg'];
+    filename = ['BW' num2str(i, '%02d') '.jpg'];
     A = imread(filename);
     imshow(A)
     pause(10)
