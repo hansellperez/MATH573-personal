@@ -1,0 +1,14 @@
+#!/bin/bash
+#MSUB -l walltime=00:08:00:00 
+#MSUB -N Test1TG 
+#MSUB -m abe
+#MSUB -M hansell.perez01@student.csulb.edu 
+#MSUB -l nodes=1:ppn=24 
+#MSUB -j oe
+#MSUB -S /bin/bash
+#MSUB -v DEBUG
+echo "begin"
+pwd
+export PATH="/opt/matlabR2021a/bin:$PATH"
+matlab -nodisplay -nodesktop -nosplash <CoinTossMain.m
+echo "done.."
