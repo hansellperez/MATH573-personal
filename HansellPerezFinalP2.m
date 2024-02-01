@@ -1,0 +1,34 @@
+function [k,x] = HansellPerezFinalP2(d,u1,u2,l1,l2,b,x0,TOL)
+    n = length(d);
+    k = 1;
+
+    x = zeros(n,1);
+    while k <= 10000
+        for i = 1:n
+            if i < n-1
+                sum1 = u1(i)*x0(i+1) + u2(i)*x0(i+2);
+            elseif i == n-1
+                sum1 = u1(i)*x0(i+1);
+            else
+                sum1 = 0;
+            end
+            
+            if i == 1
+                sum2 = 0;
+            elseif i == 2
+                sum2 = l1(i-1)*x(i-1);
+            else 
+                sum2 = l2(i-2)*x(i-2) + l1(i-1)*x(i-1);
+            end
+
+            x(i) = (1/d(i))*(-sum1 - sum2 + b(i));
+        end
+
+        if norm(x - x0) < TOL
+            break
+        end
+
+        k = k + 1;
+        x0 = x;
+    end
+end

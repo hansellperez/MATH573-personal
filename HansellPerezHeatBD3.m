@@ -8,8 +8,8 @@ function [wN] = HansellPerezHeatBD3(l, T, alpha, m, N)
     [l1, l2, u2] = HPerezCrout3Diag(a, b, c);
     
 
-    % A = diag((1+2*lambda)*ones(m-1,1)) + diag(-lambda*ones(m-2,1), 1) + diag(-lambda*ones(m-2,1), -1);
-    % [L, U] = lu(A);
+    A = diag((1+2*lambda)*ones(m-1,1)) + diag(-lambda*ones(m-2,1), 1) + diag(-lambda*ones(m-2,1), -1);
+    [L, U] = lu(A);
     x = 0:h:l;
     f = fm;
     w0 = zeros(m-1,1);
@@ -20,13 +20,8 @@ function [wN] = HansellPerezHeatBD3(l, T, alpha, m, N)
     end
 
     for i = 1:N
-%         y = L\w0;
-%         wN = U\y;
-        y(1) = w0/l1(1);
-        for j = 2:m-1
-            y(i) = ;
-        end
-        wN = ; %solve Uw0 = y?
+        y = L\w0;
+        wN = U\y;
         w0 = wN;
     end
 end
